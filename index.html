@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinares - Panel de Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Pinares</h1>
+            <div class="user-info">
+                <span id="user-name">Cargando...</span>
+                <button id="logout-btn" class="btn btn-secondary">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="status-bar">
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="status-indicator status-clean"></div>
+                        <span>Limpia</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="status-indicator status-dirty"></div>
+                        <span>Sucia</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="status-indicator status-occupied"></div>
+                        <span>Ocupada</span>
+                    </div>
+                </div>
+                <button id="refresh-btn" class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i> Actualizar
+                </button>
+            </div>
+
+            <div class="houses-container">
+                <section class="houses-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-home"></i> Casas Interiores
+                    </h2>
+                    <div id="interior-houses" class="houses-grid">
+                        <!-- Las casas interiores se cargarán aquí -->
+                    </div>
+                </section>
+
+                <section class="houses-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i> Casas Exteriores
+                    </h2>
+                    <div id="exterior-houses" class="houses-grid">
+                        <!-- Las casas exteriores se cargarán aquí -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="login-header">
+                <i class="fas fa-lock"></i>
+                <h2>Acceso al Sistema</h2>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="codigo">
+                        <i class="fas fa-key"></i> Código de Acceso
+                    </label>
+                    <input type="text" id="codigo" name="codigo" placeholder="Ingrese su código de 4 dígitos" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Ingresar
+                </button>
+            </form>
+            <div id="login-error" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
