@@ -119,6 +119,7 @@ async function loadHouses() {
     if (!authToken) return;
     
     try {
+        console.log('Cargando casas...'); // Debug
         const response = await fetch(`${API_BASE_URL}/houses`, {
             headers: {
                 'Authorization': `Bearer ${authToken}`,
@@ -131,10 +132,20 @@ async function loadHouses() {
             console.log('Casas cargadas:', houses); // Debug
             renderHouses(houses);
         } else {
-            console.error('Error al cargar casas:', response.statusText);
+            console.error('Error al cargar casas:', response.status, response.statusText);
+            // Mostrar mensaje de error al usuario
+            const interiorHouses = document.getElementById('interior-houses');
+            const exteriorHouses = document.getElementById('exterior-houses');
+            interiorHouses.innerHTML = '<p class="loading">Error al cargar las casas. Intente nuevamente.</p>';
+            exteriorHouses.innerHTML = '';
         }
     } catch (error) {
         console.error('Error de conexión:', error);
+        // Mostrar mensaje de error al usuario
+        const interiorHouses = document.getElementById('interior-houses');
+        const exteriorHouses = document.getElementById('exterior-houses');
+        interiorHouses.innerHTML = '<p class="loading">Error de conexión. Verifique su internet.</p>';
+        exteriorHouses.innerHTML = '';
     }
 }
 
